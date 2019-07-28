@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace DungeonLeveling
         public List<Unit> tuable = new List<Unit>();
 
         // Initialisation de tous les obj
+        public Basic2d map;
 
         //UI
         public UI ui;
@@ -26,14 +28,22 @@ namespace DungeonLeveling
 
         public World()
         {
-            hero = new Hero("2d/Units/Hero/sorcier", new Vector2(Global.screenWidth/2 - 24, Global.screenHeight/2 -24), new Vector2(48, 48));
-            
+            // Hero
+            var animations = new Dictionary<string, Animation>()
+            {
+                { "WalkUp", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_up"), 9) },
+                { "WalkDown", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_down"), 9) },
+                { "WalkLeft", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_left"), 9) },
+                { "WalkRight", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_right"), 9) },
+            };
+            hero = new Hero(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24), new Vector2(33, 53), animations);
+
             // Spawner
-            spawnPoints.Add(new SpawnPoint("2d/Units/Mobs/necro", new Vector2(50, 50), new Vector2(60, 60)));
-            spawnPoints.Add(new SpawnPoint("2d/Units/Mobs/necro", new Vector2(Global.screenWidth / 2, 50), new Vector2(60, 60)));
-            spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(500);
-            spawnPoints.Add(new SpawnPoint("2d/Units/Mobs/necro", new Vector2(Global.screenWidth - 50, 50), new Vector2(60, 60)));
-            spawnPoints[spawnPoints.Count - 1].spawnTimer.AddToTimer(1000);
+            
+            spawnPoints.Add(new SpawnPoint("Autre/vide", Global.camera.GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
+
+            // Map
+            map = new Basic2d("2d/Map/map", new Vector2(Global.screenWidth / 2, Global.screenHeight / 2), new Vector2(750,750));
 
             ui = new UI();
             ui.Update(this);
@@ -78,6 +88,7 @@ namespace DungeonLeveling
 
         public void Draw()
         {
+            map.Draw();
             foreach (SpawnPoint spawnPoint in spawnPoints)
             {
                 spawnPoint.Draw();

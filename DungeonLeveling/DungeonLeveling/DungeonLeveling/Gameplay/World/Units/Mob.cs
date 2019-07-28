@@ -25,6 +25,13 @@ namespace DungeonLeveling
         {
             position += Global.RadialMovement(hero.position, position, speed);
             rotation = Global.RotateTowards(position, hero.position);
+
+            if (Global.GetDistance(position, hero.position) < 15)
+            {
+                hero.GetHit(25);
+                isDead = true;
+            }
+
         }
 
 

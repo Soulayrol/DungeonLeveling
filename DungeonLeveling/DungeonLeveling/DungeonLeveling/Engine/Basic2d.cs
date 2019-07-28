@@ -19,7 +19,8 @@ namespace DungeonLeveling
         {
             position = pos;
             dimension = dims;
-            texture = Global.content.Load<Texture2D>(path);
+            if(path != null)
+                texture = Global.content.Load<Texture2D>(path);
         }
 
         public virtual void Update()
@@ -33,10 +34,10 @@ namespace DungeonLeveling
                 Global.spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y), null, Color.White, rotation, new Vector2(texture.Bounds.Width / 2, texture.Bounds.Height / 2), new SpriteEffects(), 0);
             }
         }
-        public virtual void Draw(Vector2 Origin)
+        public virtual void Draw(Vector2 Origin, Color color)
         {
             if (texture != null) {
-                Global.spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y), null, Color.White, rotation, new Vector2(Origin.X / 2, Origin.Y / 2), new SpriteEffects(), 0);
+                Global.spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y), null, color, rotation, new Vector2(Origin.X / 2, Origin.Y / 2), new SpriteEffects(), 0);
             }
         }
         

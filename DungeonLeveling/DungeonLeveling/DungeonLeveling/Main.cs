@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 #endregion
 
 namespace DungeonLeveling
@@ -15,7 +16,6 @@ namespace DungeonLeveling
         // Monogame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Viewport viewport;
         // Other
 
         public Main()
@@ -23,7 +23,7 @@ namespace DungeonLeveling
             IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
+            Global.camera = new Camera();
             // Input
             Global.inputs = new InputManager(this);
         }
@@ -50,7 +50,7 @@ namespace DungeonLeveling
             Global.spriteBatch = spriteBatch;
             // Load the World
             Global.world = new World();
-            Global.camera = new Camera();
+            
         }
         
         protected override void UnloadContent()

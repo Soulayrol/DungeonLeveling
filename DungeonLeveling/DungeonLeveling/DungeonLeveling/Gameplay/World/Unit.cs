@@ -9,9 +9,11 @@ namespace DungeonLeveling
 {
     public class Unit : Basic2d
     {
+        protected AnimationManager _animationManager;
+        public Vector2 Velocity;
+        protected Dictionary<string, Animation> _animations;
         public bool isDead;
-        public float speed, hitDist;
-
+        public float speed, hitDist, healh, healhMax;
 
         public Unit(string path, Vector2 pos, Vector2 dims, float speedBase = 2f) 
             : base(path, pos, dims)
@@ -19,21 +21,60 @@ namespace DungeonLeveling
             isDead = false;
             speed = speedBase;
             hitDist = 35f;
+            healh = 100;
+            healhMax = healh;
+        }
+        public Unit(Vector2 pos, Vector2 dims, Dictionary<string, Animation> animations, float speedBase = 2f)
+            : base(null, pos, dims)
+        {
+            _animations = animations;
+            _animationManager = new AnimationManager(_animations.First().Value);
+            speed = speedBase;
         }
 
         public override void Update()
         {
+            if (_animationManager != null)
+            {
+                Console.WriteLine(_animations.First().Value);
+                SetAnimations();
+                _animationManager.Update();
+            }
             base.Update();
+            Velocity = Vector2.Zero;
         }
         public override void Draw()
         {
-            base.Draw();
+            if (_animationManager != null)
+            {
+                _animationManager.Position = position;
+                _animationManager.Draw(Global.spriteBatch);
+            }
+            else if (texture != null)
+                base.Draw();
         }
 
-        public virtual void GetHit()
+        public virtual void GetHit(float dmg)
         {
-            isDead = true;
+            healh -= dmg;
+            if(healh <= 0)
+                isDead = true;
         }
+
+        protected virtual void SetAnimations()
+        {
+            if (Velocity.X > 0)
+                _animationManager.Play(_animations["WalkRight"]);
+            else if (Velocity.X < 0)
+                _animationManager.Play(_animations["WalkLeft"]);
+            else if (Velocity.Y > 0)
+                _animationManager.Play(_animations["WalkDown"]);
+            else if (Velocity.Y < 0)
+                _animationManager.Play(_animations["WalkUp"]);
+            else _animationManager.Stop();
+        }
+        
+
 
     }
 }

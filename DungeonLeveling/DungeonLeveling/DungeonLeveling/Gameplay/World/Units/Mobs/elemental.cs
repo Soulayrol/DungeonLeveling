@@ -21,9 +21,9 @@ namespace DungeonLeveling
         
 
 
-        public override void Draw(Vector2 Offset)
+        public override void Draw()
         {
-            base.Draw(Offset);
+            base.Draw();
         }
 
 

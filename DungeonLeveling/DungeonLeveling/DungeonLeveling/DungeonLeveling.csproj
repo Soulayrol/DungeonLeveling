@@ -41,21 +41,26 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Animation\Animation.cs" />
     <Compile Include="Engine\Basic2d.cs" />
     <Compile Include="Engine\Camera.cs" />
     <Compile Include="Engine\Inputs\InputManager.cs" />
+    <Compile Include="Engine\Output\QuantityDisplayBar.cs" />
     <Compile Include="Engine\TimeMaster.cs" />
     <Compile Include="Gameplay\World.cs" />
+    <Compile Include="Gameplay\World\Map.cs" />
     <Compile Include="Gameplay\World\Projectile.cs" />
-    <Compile Include="Gameplay\World\Projectiles\Fireball.cs" />
+    <Compile Include="Gameplay\World\Projectiles\Bullet.cs" />
     <Compile Include="Gameplay\World\SpawnPoint.cs" />
     <Compile Include="Gameplay\World\UI.cs" />
     <Compile Include="Gameplay\World\Unit.cs" />
     <Compile Include="Gameplay\World\Units\Hero.cs" />
     <Compile Include="Gameplay\World\Units\Mob.cs" />
     <Compile Include="Gameplay\World\Units\Mobs\elemental.cs" />
+    <Compile Include="Gameplay\World\Units\Mobs\RedBlop.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Animation\AnimationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,23 +71,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\2d\Projectiles\fireball.png" />
-    <Content Include="Content\2d\Units\Hero\sorcier.png" />
+    <Content Include="Content\2d\Hero\hero_down.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\2d\Hero\hero_left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\2d\Hero\hero_right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\2d\Hero\hero_up.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\2d\Map\map.png" />
+    <Content Include="Content\2d\Projectiles\bullet.png" />
     <Content Include="Content\2d\Units\Mobs\necro.png" />
+    <Content Include="Content\2d\Units\Mobs\monster_1.png" />
     <Content Include="Content\2d\Units\Mobs\water_elemental.png" />
     <Content Include="Content\Autre\cursor.png" />
+    <Content Include="Content\Autre\healthBar.png" />
+    <Content Include="Content\Autre\healthBarBkg.png" />
+    <Content Include="Content\Autre\healthBarBkgSimple.png" />
+    <Content Include="Content\Autre\healthBarSimple.png" />
+    <Content Include="Content\Autre\vide.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
     <None Include="Content\Fonts\File.spritefont" />
-    <None Include="Content\Fonts\VCR_OSD_MONO_1.001.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\2d\Hero\" />
-    <Folder Include="Content\2d\Map\" />
-    <Folder Include="Content\2d\Mobs\" />
     <Folder Include="Content\Audio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

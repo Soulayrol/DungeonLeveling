@@ -45,7 +45,7 @@ namespace DungeonLeveling
             {
                 if (Global.GetDistance(position, units[i].position) < units[i].hitDist)
                 {
-                    units[i].GetHit();
+                    units[i].GetHit(50f);
                     return true;
                 }
             }
@@ -53,9 +53,9 @@ namespace DungeonLeveling
         }
 
 
-        public override void Draw(Vector2 Offset)
+        public override void Draw()
         {
-            base.Draw(Offset);
+            base.Draw();
         }
 
     }

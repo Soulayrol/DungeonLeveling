@@ -10,13 +10,14 @@ namespace DungeonLeveling
 {
     public class Hero : Unit
     {
-
         private TimerMaster cooldown = new TimerMaster(500);
 
-        public Hero(string path, Vector2 pos, Vector2 dims) 
-            : base(path, pos, dims)
+        public Hero(Vector2 pos, Vector2 dims, Dictionary<string, Animation> animations) 
+            : base(pos, dims, animations)
         {
-
+            healh = 100;
+            healhMax = healh;
+            speed = 2.5f;
         }
 
         public override void Update()
@@ -28,28 +29,31 @@ namespace DungeonLeveling
             {
                 position.X -= speed;
                 --cameraDirection.X;
+                Velocity.X = -speed;
             }
-            if (Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D))
+            else if (Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D))
             {
                 position.X += speed;
                 ++cameraDirection.X;
+                Velocity.X = speed;
             }
-            if (Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z))
+            else if (Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z))
             {
                 position.Y -= speed;
                 --cameraDirection.Y;
+                Velocity.Y = -speed;
             }
-            if (Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S))
+            else if (Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S))
             {
                 position.Y += speed;
                 ++cameraDirection.Y;
+                Velocity.Y = speed;
             }
             if((Global.inputs.IsPressed(Input.RightStick) || Global.inputs.IsPressed(MouseInput.LeftButton)) && cooldown.Test())
             {
                 cooldown.ResetToZero();
-                Global.world.AddProjectile(new Fireball(new Vector2(position.X, position.Y), this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));
+                Global.world.AddProjectile(new Bullet(position, this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));
             }
-            System.Diagnostics.Debug.WriteLine(cooldown.Test());
             rotation = Global.RotateTowards(position, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector()));
 
             Global.camera.Pos += cameraDirection * speed;

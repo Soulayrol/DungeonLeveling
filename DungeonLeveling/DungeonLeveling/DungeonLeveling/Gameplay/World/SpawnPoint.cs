@@ -30,7 +30,7 @@ namespace DungeonLeveling
 
         public virtual void SpawnMob()
         {
-            Global.world.AddMob(new RedBlop(new Vector2(position.X, position.Y)));
+            Global.gameplay.world.AddMob(new RedBlop(new Vector2(position.X, position.Y)));
         }
 
 

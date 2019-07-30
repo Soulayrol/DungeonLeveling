@@ -114,7 +114,7 @@ namespace DungeonLeveling
                     // Update gamepad state
                     player.PreviousState = player.CurrentState;
                     player.CurrentState = GamePad.GetState(player.GamePadIndex, gamePadDeadZone);
-                    players[i] = player;//TODO: needed?
+                    players[i] = player;
                 }
             }
             base.Update(gameTime);
@@ -129,6 +129,7 @@ namespace DungeonLeveling
         {
             return currentKeyboardState.IsKeyDown(key);
         }
+
         public bool IsPressed(MouseInput input)
         {
             return IsPressed(currentMouseState, input);

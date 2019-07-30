@@ -21,7 +21,7 @@ namespace DungeonLeveling
         // Inputs
         public static InputManager inputs;
         // World Values 
-        public static World world;
+        public static Gameplay gameplay;
         public static Camera camera;
 
 

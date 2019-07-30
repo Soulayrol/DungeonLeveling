@@ -25,6 +25,5 @@ namespace DungeonLeveling
             FrameSpeed = 0.1f;
         }
         
-
     }
 }

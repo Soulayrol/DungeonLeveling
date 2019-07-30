@@ -47,6 +47,7 @@
     <Compile Include="Engine\Inputs\InputManager.cs" />
     <Compile Include="Engine\Output\QuantityDisplayBar.cs" />
     <Compile Include="Engine\TimeMaster.cs" />
+    <Compile Include="Gameplay.cs" />
     <Compile Include="Gameplay\World.cs" />
     <Compile Include="Gameplay\World\Map.cs" />
     <Compile Include="Gameplay\World\Projectile.cs" />

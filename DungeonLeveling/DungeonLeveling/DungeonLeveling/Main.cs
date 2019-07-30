@@ -17,14 +17,14 @@ namespace DungeonLeveling
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         // Other
+        
 
         public Main()
         {
             IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Global.camera = new Camera();
-            // Input
+            // Input change to 2 if you want 2 players
             Global.inputs = new InputManager(this);
         }
 
@@ -49,7 +49,7 @@ namespace DungeonLeveling
             Global.content = Content;
             Global.spriteBatch = spriteBatch;
             // Load the World
-            Global.world = new World();
+            Global.gameplay = new Gameplay();
             
         }
         
@@ -70,7 +70,7 @@ namespace DungeonLeveling
             // Input check
             Global.inputs.Update(gameTime);
             // Loop
-            Global.world.Update();
+            Global.gameplay.Update();
             
 
             base.Update(gameTime);
@@ -83,12 +83,12 @@ namespace DungeonLeveling
 
             Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice));
 
-                Global.world.Draw();
+                Global.gameplay.Draw();
 
             Global.spriteBatch.End();
 
             Global.spriteBatch.Begin();
-                Global.world.ui.Draw(Global.world);
+                Global.gameplay.world.ui.Draw(Global.gameplay.world);
             Global.spriteBatch.End();
 
 

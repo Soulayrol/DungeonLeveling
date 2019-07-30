@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace DungeonLeveling
     // Classe avec tout les obj du jeu
     public class World
     {
+
         // Units 
         public Hero hero;
         public List<Mob> mobs = new List<Mob>();
@@ -28,22 +30,23 @@ namespace DungeonLeveling
 
         public World()
         {
+            //Camera
+            Global.camera = new Camera();
             // Hero
             var animations = new Dictionary<string, Animation>()
             {
-                { "WalkUp", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_up"), 9) },
                 { "WalkDown", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_down"), 9) },
+                { "WalkUp", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_up"), 9) },
                 { "WalkLeft", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_left"), 9) },
                 { "WalkRight", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_right"), 9) },
             };
-            hero = new Hero(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24), new Vector2(33, 53), animations);
+            hero = new Hero(GetWorldPosition(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24)), new Vector2(33, 53), animations);
 
             // Spawner
-            
-            spawnPoints.Add(new SpawnPoint("Autre/vide", Global.camera.GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
+            spawnPoints.Add(new SpawnPoint("Autre/vide", GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
 
             // Map
-            map = new Basic2d("2d/Map/map", new Vector2(Global.screenWidth / 2, Global.screenHeight / 2), new Vector2(750,750));
+            map = new Basic2d("2d/Map/map", GetWorldPosition(new Vector2(Global.screenWidth / 2, Global.screenHeight / 2)), new Vector2(750,750));
 
             ui = new UI();
             ui.Update(this);
@@ -52,34 +55,44 @@ namespace DungeonLeveling
         public void Update()
         {
             // Update the Componenets of the world
-            hero.Update();
+            if (!hero.isDead)
+            {
+                hero.Update();
 
-            for (int i = 0; i < projectiles.Count; i++)
-            {
-                projectiles[i].Update(mobs.ToList<Unit>());
-                if (projectiles[i].done)
+                for (int i = 0; i < projectiles.Count; i++)
                 {
-                    projectiles.RemoveAt(i);
-                    i--;
+                    projectiles[i].Update(mobs.ToList<Unit>());
+                    if (projectiles[i].done)
+                    {
+                        projectiles.RemoveAt(i);
+                        i--;
+                    }
+                }
+                for (int i = 0; i < mobs.Count; i++)
+                {
+                    mobs[i].Update(hero);
+                    if (mobs[i].isDead)
+                    {
+                        numKilled++;
+                        mobs.RemoveAt(i);
+                        i--;
+                    }
+                }
+                for (int i = 0; i < spawnPoints.Count; i++)
+                {
+                    spawnPoints[i].Update();
+                    if (spawnPoints[i].isDead)
+                    {
+                        spawnPoints.RemoveAt(i);
+                        i--;
+                    }
                 }
             }
-            for (int i = 0; i < mobs.Count; i++)
+            else
             {
-                mobs[i].Update(hero);
-                if (mobs[i].isDead)
+                if(Global.inputs.IsPressed(Input.Start) || Global.inputs.IsPressed(Keys.Enter))
                 {
-                    numKilled++;
-                    mobs.RemoveAt(i);
-                    i--;
-                }
-            }
-            for (int i = 0; i < spawnPoints.Count; i++)
-            {
-                spawnPoints[i].Update();
-                if (spawnPoints[i].isDead)
-                {
-                    spawnPoints.RemoveAt(i);
-                    i--;
+                    Global.gameplay.ResetWorld();
                 }
             }
             // Update UI
@@ -113,6 +126,10 @@ namespace DungeonLeveling
         public virtual void AddProjectile(object obj)
         {
             projectiles.Add((Projectile)obj);
+        }
+        public Vector2 GetWorldPosition(Vector2 screenPosition)
+        {
+            return screenPosition + Global.camera.Pos;
         }
     }
 }

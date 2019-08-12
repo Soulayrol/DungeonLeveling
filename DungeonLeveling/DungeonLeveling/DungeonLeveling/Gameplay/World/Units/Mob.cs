@@ -9,14 +9,16 @@ namespace DungeonLeveling
 {
     public class Mob : Unit
     {
+        public QuantityDisplayBar healBar;
 
         public Mob(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
         {
-
+            healBar = new QuantityDisplayBar(new Vector2(80, 8), 2, Color.Red, Pos);
         }
 
         public virtual void Update(Hero hero)
         {
+            healBar.Update(healh, healhMax, position);
             AI(hero);
             base.Update();
         }
@@ -37,6 +39,7 @@ namespace DungeonLeveling
 
         public override void Draw()
         {
+            healBar.Draw();
             base.Draw();
         }
 

@@ -42,22 +42,22 @@ namespace DungeonLeveling
         public int boarder;
         public Basic2d bar, barBkg;
         public Color color;
+        public Vector2 offset;
 
-
-        public QuantityDisplayBar(string path, Vector2 dims, int Border, Color Color)
+        public QuantityDisplayBar(Vector2 dims, int Border, Color Color, Vector2 position)
         {
             boarder = Border;
             color = Color;
-            bar = new Basic2d(path, new Vector2(20, Global.screenHeight - 100), dims);
-            if (path == "Autre/healthBar")
-                barBkg = new Basic2d("Autre/healthBarBkg", new Vector2(20, Global.screenHeight - 100), dims);
-            else
-                barBkg = new Basic2d("Autre/healthBarBkgSimple", new Vector2(20, Global.screenHeight - 100), dims);
+            offset = new Vector2(-40, -40);
+            bar = new Basic2d("Autre/healthBarSimple", position + offset, dims);
+            barBkg = new Basic2d("Autre/healthBarBkgSimple", position + offset, dims);
         }
 
-        public virtual void Update(float current, float max)
+        public virtual void Update(float current, float max, Vector2 position)
         {
             bar.dimension.X = current / max * (barBkg.dimension.X - boarder * 2);
+            bar.position = position + offset;
+            barBkg.position = position + offset;
         }
 
         public virtual void Draw()

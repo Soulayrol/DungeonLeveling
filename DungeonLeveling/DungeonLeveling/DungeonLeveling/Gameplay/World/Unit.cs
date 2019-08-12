@@ -14,6 +14,7 @@ namespace DungeonLeveling
         protected Dictionary<string, Animation> _animations;
         public bool isDead;
         public float speed, hitDist, healh, healhMax;
+        
 
         public Unit(string path, Vector2 pos, Vector2 dims, float speedBase = 2f) 
             : base(path, pos, dims)
@@ -23,6 +24,7 @@ namespace DungeonLeveling
             hitDist = 35f;
             healh = 100;
             healhMax = healh;
+                
         }
         public Unit(Vector2 pos, Vector2 dims, Dictionary<string, Animation> animations, float speedBase = 2f)
             : base(null, pos, dims)
@@ -40,6 +42,7 @@ namespace DungeonLeveling
                 SetAnimations();
                 _animationManager.Update();
             }
+            
             base.Update();
             Velocity = Vector2.Zero;
         }

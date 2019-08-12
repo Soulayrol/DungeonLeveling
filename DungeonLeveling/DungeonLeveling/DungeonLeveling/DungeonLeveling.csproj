@@ -89,12 +89,24 @@
     <Content Include="Content\2d\Units\Mobs\necro.png" />
     <Content Include="Content\2d\Units\Mobs\monster_1.png" />
     <Content Include="Content\2d\Units\Mobs\water_elemental.png" />
-    <Content Include="Content\Autre\cursor.png" />
-    <Content Include="Content\Autre\healthBar.png" />
-    <Content Include="Content\Autre\healthBarBkg.png" />
-    <Content Include="Content\Autre\healthBarBkgSimple.png" />
-    <Content Include="Content\Autre\healthBarSimple.png" />
-    <Content Include="Content\Autre\vide.png" />
+    <Content Include="Content\Autre\cursor.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Autre\healthBar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Autre\healthBarBkg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Autre\healthBarBkgSimple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Autre\healthBarSimple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Autre\vide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -113,3 +113,11 @@ D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\Dungeo
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\obj\x86\Debug\DungeonLeveling.csproj.CopyComplete
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\obj\x86\Debug\DungeonLeveling.exe
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\obj\x86\Debug\DungeonLeveling.pdb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\cursor.png
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBar.png
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarBkg.png
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarBkgSimple.png
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarSimple.png
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\vide.png
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarBkgSimple.xnb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarSimple.xnb

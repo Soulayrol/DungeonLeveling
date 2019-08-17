@@ -23,11 +23,9 @@ namespace DungeonLeveling
         // World Values 
         public static Gameplay gameplay;
         public static Camera camera;
-
-
+        
         // ==============
-
-
+        
 
         public static float GetDistance(Vector2 pos, Vector2 target)
         {

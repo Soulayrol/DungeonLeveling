@@ -121,3 +121,17 @@ D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\Dungeo
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\vide.png
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarBkgSimple.xnb
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\healthBarSimple.xnb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.dll
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Graphics.dll
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Tiled.dll
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Newtonsoft.Json.dll
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.pdb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.xml
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Graphics.pdb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Graphics.xml
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Tiled.pdb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Tiled.xml
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Newtonsoft.Json.xml
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\DungeonLeveling.exe.config
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Content.Pipeline.dll
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\mapTileset.xnb

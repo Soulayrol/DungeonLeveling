@@ -21,8 +21,7 @@ namespace DungeonLeveling
         public List<Unit> tuable = new List<Unit>();
 
         // Initialisation de tous les obj
-        public Basic2d map;
-
+        
         //UI
         public UI ui;
         public int numKilled;
@@ -44,10 +43,7 @@ namespace DungeonLeveling
 
             // Spawner
             spawnPoints.Add(new SpawnPoint("Autre/vide", GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
-
-            // Map
-            map = new Basic2d("2d/Map/map", GetWorldPosition(new Vector2(Global.screenWidth / 2, Global.screenHeight / 2)), new Vector2(750,750));
-
+            
             ui = new UI();
             ui.Update(this);
         }
@@ -101,7 +97,6 @@ namespace DungeonLeveling
 
         public void Draw()
         {
-            map.Draw();
             foreach (SpawnPoint spawnPoint in spawnPoints)
             {
                 spawnPoint.Draw();

@@ -5,8 +5,13 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Extended;
+using MonoGame.Extended.Tiled;
+using MonoGame.Extended.Graphics;
+using MonoGame.Extended.Content.Pipeline;
 using System;
 using System.Collections.Generic;
+using MonoGame.Extended.Tiled.Graphics;
 #endregion
 
 namespace DungeonLeveling
@@ -17,7 +22,8 @@ namespace DungeonLeveling
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         // Other
-        
+        private TiledMap map;
+        private TiledMapRenderer mapRenderer;
 
         public Main()
         {
@@ -40,6 +46,10 @@ namespace DungeonLeveling
 
             Components.Add(Global.inputs);
             base.Initialize();
+
+            // Map
+            map = Global.content.Load<TiledMap>("2d/Map/map");
+            mapRenderer = new TiledMapRenderer(GraphicsDevice);
         }
 
         protected override void LoadContent()
@@ -50,7 +60,6 @@ namespace DungeonLeveling
             Global.spriteBatch = spriteBatch;
             // Load the World
             Global.gameplay = new Gameplay();
-            
         }
         
         protected override void UnloadContent()
@@ -62,16 +71,13 @@ namespace DungeonLeveling
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // Camera
-
+            
             // Take Monogame Values
             Global.gameTime = gameTime;
             // Input check
             Global.inputs.Update(gameTime);
             // Loop
             Global.gameplay.Update();
-            
 
             base.Update(gameTime);
         }
@@ -81,16 +87,16 @@ namespace DungeonLeveling
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice));
-
-                Global.gameplay.Draw();
-
+            Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice), samplerState: SamplerState.PointClamp);
+            var matrix = Global.camera.get_transformation(GraphicsDevice);
+            Console.WriteLine(matrix);
+            mapRenderer.Draw(map, matrix);
+            Global.gameplay.Draw();
             Global.spriteBatch.End();
 
             Global.spriteBatch.Begin();
                 Global.gameplay.world.ui.Draw(Global.gameplay.world);
             Global.spriteBatch.End();
-
 
             base.Draw(gameTime);
         }

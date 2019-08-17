@@ -31,19 +31,19 @@ namespace DungeonLeveling
                 --cameraDirection.X;
                 Velocity.X = -speed;
             }
-            else if (Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D))
+            if (Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D))
             {
                 position.X += speed;
                 ++cameraDirection.X;
                 Velocity.X = speed;
             }
-            else if (Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z))
+            if (Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z))
             {
                 position.Y -= speed;
                 --cameraDirection.Y;
                 Velocity.Y = -speed;
             }
-            else if (Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S))
+            if (Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S))
             {
                 position.Y += speed;
                 ++cameraDirection.Y;

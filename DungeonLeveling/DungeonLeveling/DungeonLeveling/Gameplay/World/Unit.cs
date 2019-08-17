@@ -14,7 +14,10 @@ namespace DungeonLeveling
         protected Dictionary<string, Animation> _animations;
         public bool isDead;
         public float speed, hitDist, healh, healhMax;
-        
+        public Rectangle BoudingBox
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y); }
+        }
 
         public Unit(string path, Vector2 pos, Vector2 dims, float speedBase = 2f) 
             : base(path, pos, dims)

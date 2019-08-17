@@ -10,6 +10,10 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\packages\MonoGame.Extended.Content.Pipeline.1.1.0\tools\MonoGame.Extended.Content.Pipeline.dll
+/reference:..\..\packages\MonoGame.Extended.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll
+/reference:..\..\packages\MonoGame.Extended.Tiled.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Tiled.dll
+/reference:..\..\packages\MonoGame.Extended.Graphics.1.1.0\lib\portable-net45+win8+wpa81\MonoGame.Extended.Graphics.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -61,7 +65,12 @@
 /processorParam:TextureFormat=Color
 /build:2d/Hero/hero_up.png
 
-#begin 2d/Map/map.png
+#begin 2d/Map/map.tmx
+/importer:
+/processor:
+/build:2d/Map/map.tmx
+
+#begin 2d/Map/mapTileset.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -71,7 +80,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:2d/Map/map.png
+/build:2d/Map/mapTileset.png
 
 #begin 2d/Projectiles/bullet.png
 /importer:TextureImporter
@@ -133,18 +142,6 @@
 /processorParam:TextureFormat=Color
 /build:Autre/cursor.png
 
-#begin Autre/cursor.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Autre/cursor.png
-
 #begin Autre/healthBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -156,30 +153,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Autre/healthBar.png
-
-#begin Autre/healthBar.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Autre/healthBar.png
-
-#begin Autre/healthBarBkg.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Autre/healthBarBkg.png
 
 #begin Autre/healthBarBkg.png
 /importer:TextureImporter
@@ -216,18 +189,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Autre/healthBarSimple.png
-
-#begin Autre/vide.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Autre/vide.png
 
 #begin Autre/vide.png
 /importer:TextureImporter

@@ -50,7 +50,7 @@ namespace DungeonLeveling
 
         public Matrix get_transformation(GraphicsDevice graphicsDevice)
         {
-            _transform =       // Thanks to o KB o for this solution
+            _transform =      
                 Matrix.CreateTranslation(new Vector3(-_pos.X, -_pos.Y, 0)) *
                 Matrix.CreateRotationZ(Rotation) *
                 Matrix.CreateScale(new Vector3(Zoom, Zoom, 0));

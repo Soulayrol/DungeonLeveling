@@ -41,7 +41,6 @@ namespace DungeonLeveling
         {
             if (_animationManager != null)
             {
-                Console.WriteLine(_animations.First().Value);
                 SetAnimations();
                 _animationManager.Update();
             }
@@ -55,6 +54,7 @@ namespace DungeonLeveling
             {
                 _animationManager.Position = position;
                 _animationManager.Draw(Global.spriteBatch);
+
             }
             else if (texture != null)
                 base.Draw();

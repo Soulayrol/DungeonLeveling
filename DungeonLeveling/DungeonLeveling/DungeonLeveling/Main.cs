@@ -22,8 +22,9 @@ namespace DungeonLeveling
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         // Other
-        private TiledMap map;
-        private TiledMapRenderer mapRenderer;
+        protected TiledMap map;
+        protected TiledMapRenderer mapRenderer;
+        
 
         public Main()
         {
@@ -46,10 +47,12 @@ namespace DungeonLeveling
 
             Components.Add(Global.inputs);
             base.Initialize();
-
+            
             // Map
             map = Global.content.Load<TiledMap>("2d/Map/map");
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
+            Global.collision = new Collision();
+            Global.collision.LoadCollision();
         }
 
         protected override void LoadContent()
@@ -79,6 +82,8 @@ namespace DungeonLeveling
             // Loop
             Global.gameplay.Update();
 
+            
+
             base.Update(gameTime);
         }
 
@@ -88,16 +93,14 @@ namespace DungeonLeveling
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice), samplerState: SamplerState.PointClamp);
-            var matrix = Global.camera.get_transformation(GraphicsDevice);
-            Console.WriteLine(matrix);
-            mapRenderer.Draw(map, matrix);
-            Global.gameplay.Draw();
+                mapRenderer.Draw(map, Global.camera.get_transformation(GraphicsDevice));
+                Global.gameplay.Draw();
             Global.spriteBatch.End();
 
             Global.spriteBatch.Begin();
                 Global.gameplay.world.ui.Draw(Global.gameplay.world);
             Global.spriteBatch.End();
-
+            
             base.Draw(gameTime);
         }
     }

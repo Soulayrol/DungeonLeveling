@@ -24,32 +24,61 @@ namespace DungeonLeveling
         {
             Vector2 cameraDirection = Vector2.Zero;
             cooldown.UpdateTimer();
-
-            if (Global.inputs.IsPressed(Input.Left) || Global.inputs.IsPressed(Keys.Q))
+            
+            // Mouvement
+            if ((Global.inputs.IsPressed(Input.Left) || Global.inputs.IsPressed(Keys.Q)))
             {
                 position.X -= speed;
                 --cameraDirection.X;
-                Velocity.X = -speed;
+                --Velocity.X;
+                // Test colision
+                if (Global.collision.IsCollision(BoudingBox))
+                {
+                    position.X += speed;
+                    ++cameraDirection.X;
+                    ++Velocity.X;
+                }
             }
-            if (Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D))
+            if ((Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D)))
             {
                 position.X += speed;
                 ++cameraDirection.X;
-                Velocity.X = speed;
+                ++Velocity.X;
+                // Test colision
+                if (Global.collision.IsCollision(BoudingBox))
+                {
+                    position.X -= speed;
+                    --cameraDirection.X;
+                    --Velocity.X;
+                }
             }
-            if (Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z))
+            if ((Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z)))
             {
                 position.Y -= speed;
                 --cameraDirection.Y;
-                Velocity.Y = -speed;
+                --Velocity.Y;
+                // Test colision
+                if (Global.collision.IsCollision(BoudingBox))
+                {
+                    position.Y += speed;
+                    ++cameraDirection.Y;
+                    ++Velocity.Y;
+                }
             }
-            if (Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S))
+            if ((Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S)))
             {
                 position.Y += speed;
                 ++cameraDirection.Y;
-                Velocity.Y = speed;
+                ++Velocity.Y;
+                // Test colision
+                if (Global.collision.IsCollision(BoudingBox))
+                {
+                    position.Y -= speed;
+                    --cameraDirection.Y;
+                    --Velocity.Y;
+                }
             }
-            if((Global.inputs.IsPressed(Input.RightStick) || Global.inputs.IsPressed(MouseInput.LeftButton)) && cooldown.Test())
+            if ((Global.inputs.IsPressed(Input.RightStick) || Global.inputs.IsPressed(MouseInput.LeftButton)) && cooldown.Test())
             {
                 cooldown.ResetToZero();
                 Global.gameplay.world.AddProjectile(new Bullet(position, this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));

@@ -14,7 +14,10 @@ namespace DungeonLeveling
         public Unit owner;
         public Vector2 direction;
         public bool done;
-
+        public Rectangle BoudingBox
+        {
+            get { return new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y); }
+        }
         protected TimerMaster timer;
 
         public Projectile(string Path, Vector2 Pos, Vector2 Dims, Unit Owner, Vector2 Targer)
@@ -30,7 +33,8 @@ namespace DungeonLeveling
         public virtual void Update(List<Unit> units)
         {
             position += direction * speed;
-
+            if (Global.collision.IsCollision(BoudingBox))
+                done = true;
             timer.UpdateTimer();
             if (timer.Test())
                 done = true;

@@ -50,7 +50,7 @@
     <Compile Include="Engine\TimeMaster.cs" />
     <Compile Include="Gameplay.cs" />
     <Compile Include="Gameplay\World.cs" />
-    <Compile Include="Gameplay\World\Map.cs" />
+    <Compile Include="Gameplay\World\Collision.cs" />
     <Compile Include="Gameplay\World\Projectile.cs" />
     <Compile Include="Gameplay\World\Projectiles\Bullet.cs" />
     <Compile Include="Gameplay\World\SpawnPoint.cs" />

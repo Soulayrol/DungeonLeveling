@@ -12,7 +12,6 @@ namespace DungeonLeveling
     // Classe avec tout les obj du jeu
     public class World
     {
-
         // Units 
         public Hero hero;
         public List<Mob> mobs = new List<Mob>();
@@ -39,10 +38,10 @@ namespace DungeonLeveling
                 { "WalkLeft", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_left"), 9) },
                 { "WalkRight", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_right"), 9) },
             };
-            hero = new Hero(GetWorldPosition(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24)), new Vector2(33, 53), animations);
-
+            hero = new Hero(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24), new Vector2(33, 53), animations);
+           
             // Spawner
-            spawnPoints.Add(new SpawnPoint("Autre/vide", GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
+            spawnPoints.Add(new SpawnPoint("Autre/vide", Global.camera.GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
             
             ui = new UI();
             ui.Update(this);
@@ -111,7 +110,6 @@ namespace DungeonLeveling
             }
 
             hero.Draw();
-            
         }
 
         public virtual void AddMob(object obj)
@@ -121,10 +119,6 @@ namespace DungeonLeveling
         public virtual void AddProjectile(object obj)
         {
             projectiles.Add((Projectile)obj);
-        }
-        public Vector2 GetWorldPosition(Vector2 screenPosition)
-        {
-            return screenPosition + Global.camera.Pos;
         }
     }
 }

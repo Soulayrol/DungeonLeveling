@@ -12,6 +12,8 @@
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Map/mapTileset.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Map/red.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Projectiles/bullet.png</File>
+    <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Projectiles/HalfCircle.png</File>
+    <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Projectiles/Light.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Units/Mobs/monster_1.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Units/Mobs/necro.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Units/Mobs/water_elemental.png</File>
@@ -24,6 +26,8 @@
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Fonts/File.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

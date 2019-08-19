@@ -136,3 +136,5 @@ D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\Dungeo
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Extended.Content.Pipeline.dll
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\mapTileset.xnb
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\red.xnb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Projectiles\HalfCircle.xnb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Projectiles\Light.xnb

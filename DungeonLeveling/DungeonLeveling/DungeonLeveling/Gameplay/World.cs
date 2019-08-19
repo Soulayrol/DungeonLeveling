@@ -41,7 +41,7 @@ namespace DungeonLeveling
             hero = new Hero(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24), new Vector2(33, 53), animations);
            
             // Spawner
-            spawnPoints.Add(new SpawnPoint("Autre/vide", Global.camera.GetWorldPosition(new Vector2(1000, 600)), new Vector2(60, 60)));
+            spawnPoints.Add(new SpawnPoint("Autre/vide", Global.camera.GetWorldPosition(new Vector2(500, 500)), new Vector2(60, 60)));
             
             ui = new UI();
             ui.Update(this);

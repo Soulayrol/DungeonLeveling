@@ -10,7 +10,8 @@ namespace DungeonLeveling
 {
     public class Hero : Unit
     {
-        private TimerMaster cooldown = new TimerMaster(500);
+        private TimerMaster cooldown = new TimerMaster(1000);
+        private TimerMaster cooldown2 = new TimerMaster(1500);
 
         public Hero(Vector2 pos, Vector2 dims, Dictionary<string, Animation> animations) 
             : base(pos, dims, animations)
@@ -24,7 +25,8 @@ namespace DungeonLeveling
         {
             Vector2 cameraDirection = Vector2.Zero;
             cooldown.UpdateTimer();
-            
+            cooldown2.UpdateTimer();
+
             // Mouvement
             if ((Global.inputs.IsPressed(Input.Left) || Global.inputs.IsPressed(Keys.Q)))
             {
@@ -82,6 +84,11 @@ namespace DungeonLeveling
             {
                 cooldown.ResetToZero();
                 Global.gameplay.world.AddProjectile(new Bullet(position, this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));
+            }
+            if ((Global.inputs.IsPressed(Input.LeftStick) || Global.inputs.IsPressed(MouseInput.RightButton)) && cooldown2.Test())
+            {
+                cooldown2.ResetToZero();
+                Global.gameplay.world.AddProjectile(new Bolt(position, this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));
             }
             rotation = Global.RotateTowards(position, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector()));
 

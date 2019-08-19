@@ -10,13 +10,13 @@ namespace DungeonLeveling
 {
     public class Bullet : Projectile
     {
-        private TimerMaster timerFireball = new TimerMaster(5000);
+        private TimerMaster timerBullet = new TimerMaster(5000);
 
         public Bullet(Vector2 Pos, Unit Owner, Vector2 Target) 
             : base("2d/Projectiles/bullet", Pos, new Vector2(10, 30), Owner, Target)
         {
+            timer = timerBullet;
             speed = 5.0F;
-            timer = timerFireball;
         }
 
         public override void Update(List<Unit> units)

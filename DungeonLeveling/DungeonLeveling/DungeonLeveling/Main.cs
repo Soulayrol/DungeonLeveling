@@ -13,7 +13,7 @@ using System;
 using System.Collections.Generic;
 using MonoGame.Extended.Tiled.Graphics;
 #endregion
-
+ 
 namespace DungeonLeveling
 {
     public class Main : Game
@@ -21,10 +21,7 @@ namespace DungeonLeveling
         // Monogame
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        // Other
-        protected TiledMap map;
-        protected TiledMapRenderer mapRenderer;
-        
+
 
         public Main()
         {
@@ -37,9 +34,10 @@ namespace DungeonLeveling
 
         protected override void Initialize()
         {
-            Global.screenWidth = 1600;
-            Global.screenHeight = 900;
-            
+            Global.screenWidth = 640;
+            Global.screenHeight = 640;
+            Global.graphicsDevice = GraphicsDevice;
+
             graphics.PreferredBackBufferWidth = Global.screenWidth;
             graphics.PreferredBackBufferHeight = Global.screenHeight;
             // graphics.IsFullScreen = true;
@@ -48,11 +46,6 @@ namespace DungeonLeveling
             Components.Add(Global.inputs);
             base.Initialize();
             
-            // Map
-            map = Global.content.Load<TiledMap>("2d/Map/map");
-            mapRenderer = new TiledMapRenderer(GraphicsDevice);
-            Global.collision = new Collision();
-            Global.collision.LoadCollision();
         }
 
         protected override void LoadContent()
@@ -91,9 +84,8 @@ namespace DungeonLeveling
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice), samplerState: SamplerState.PointClamp);
-                mapRenderer.Draw(map, Global.camera.get_transformation(GraphicsDevice));
+            // Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice), samplerState: SamplerState.PointClamp);
+            Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp);
                 Global.gameplay.Draw();
             Global.spriteBatch.End();
 

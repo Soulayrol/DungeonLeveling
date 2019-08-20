@@ -83,16 +83,16 @@ namespace DungeonLeveling
             if ((Global.inputs.IsPressed(Input.RightStick) || Global.inputs.IsPressed(MouseInput.LeftButton)) && cooldown.Test())
             {
                 cooldown.ResetToZero();
-                Global.gameplay.world.AddProjectile(new Bullet(position, this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));
+                Global.gameplay.world.map.AddProjectile(new Bullet(position, this, Global.inputs.GetMousePositionVector()));
             }
             if ((Global.inputs.IsPressed(Input.LeftStick) || Global.inputs.IsPressed(MouseInput.RightButton)) && cooldown2.Test())
             {
                 cooldown2.ResetToZero();
-                Global.gameplay.world.AddProjectile(new Bolt(position, this, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector())));
+                Global.gameplay.world.map.AddProjectile(new Bolt(position, this, Global.inputs.GetMousePositionVector()));
             }
-            rotation = Global.RotateTowards(position, Global.camera.GetWorldPosition(Global.inputs.GetMousePositionVector()));
+            rotation = Global.RotateTowards(position, Global.inputs.GetMousePositionVector());
 
-            Global.camera.Pos += cameraDirection * speed;
+            // Global.camera.Pos += cameraDirection * speed;
 
             base.Update();
         }

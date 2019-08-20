@@ -70,6 +70,21 @@
 /processor:
 /build:2d/Map/map.tmx
 
+#begin 2d/Map/mapDown.tmx
+/importer:
+/processor:
+/build:2d/Map/mapDown.tmx
+
+#begin 2d/Map/mapLeft.tmx
+/importer:
+/processor:
+/build:2d/Map/mapLeft.tmx
+
+#begin 2d/Map/mapRight.tmx
+/importer:
+/processor:
+/build:2d/Map/mapRight.tmx
+
 #begin 2d/Map/mapTileset.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -81,6 +96,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:2d/Map/mapTileset.png
+
+#begin 2d/Map/mapTop.tmx
+/importer:
+/processor:
+/build:2d/Map/mapTop.tmx
 
 #begin 2d/Map/red.png
 /importer:TextureImporter

@@ -17,6 +17,7 @@ namespace DungeonLeveling
         // Monogame Values
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
+        public static GraphicsDevice graphicsDevice;
         public static GameTime gameTime;
         // Inputs
         public static InputManager inputs;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Map/map.tmx</SourceFile>
-  <SourceTime>2019-08-18T16:58:44.0625248+02:00</SourceTime>
+  <SourceTime>2019-08-20T23:24:46.3881708+02:00</SourceTime>
   <DestFile>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/bin/Windows/Content/2d/Map/map.xnb</DestFile>
-  <DestTime>2019-08-18T16:58:45.6843197+02:00</DestTime>
+  <DestTime>2019-08-20T23:24:49.5032903+02:00</DestTime>
   <Importer>TiledMapImporter</Importer>
   <ImporterTime>2018-05-23T11:26:24+02:00</ImporterTime>
   <Processor>TiledMapProcessor</Processor>

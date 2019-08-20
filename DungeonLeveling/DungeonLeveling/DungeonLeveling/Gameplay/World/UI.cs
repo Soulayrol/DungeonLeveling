@@ -33,10 +33,10 @@ namespace DungeonLeveling {
             // Nb kill string
             string tempStr = "Killed = " + world.numKilled;
             Vector2 strDims = font.MeasureString(tempStr);
-            Global.spriteBatch.DrawString(font, tempStr, new Vector2(Global.screenWidth / 2 - strDims.X / 2, Global.screenHeight - 40), Color.Black);
+            Global.spriteBatch.DrawString(font, tempStr, new Vector2(Global.screenWidth / 2  + 80, Global.screenHeight - 30), Color.White);
             // Hero heal txt
             tempStr = "Healh : " + Global.gameplay.world.hero.healh;
-            Global.spriteBatch.DrawString(font, tempStr, new Vector2(25, Global.screenHeight - 83), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 0);
+            Global.spriteBatch.DrawString(font, tempStr, new Vector2(25, Global.screenHeight - 30), Color.White, 0f, Vector2.Zero, 0.8f, SpriteEffects.None, 0);
 
             if (world.hero.isDead) {
                 tempStr = "Appuyer sur ENTRER pour recommencer !";

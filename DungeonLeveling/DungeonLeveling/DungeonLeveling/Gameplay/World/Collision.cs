@@ -4,6 +4,7 @@ using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using System;
 using System.Collections.Generic;
+using TiledSharp;
 
 namespace DungeonLeveling
 {
@@ -11,36 +12,24 @@ namespace DungeonLeveling
     {
         public List<Rectangle> collision;
 
-        public void LoadCollision()
+        public void LoadCollision(string path)
         {
-            int[] collisionLayer = new int[400]{    744,744,744,744,744,744,744,744,744,0,0,744,744,744,744,744,744,744,744,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,744,744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,744,744,744,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                                    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                                    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,744,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,
-                                                    744,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,744,744,
-                                                    744,744,744,744,744,744,744,744,744,0,0,744,744,744,744,744,744,744,744,744,
-                                                    744,744,744,744,744,744,744,744,744,0,0,744,744,744,744,744,744,744,744,744             }; 
+            var map = new TmxMap(path);
+            var myLayer = map.Layers["collision"];
 
+            int[] collisionLayer = new int[400];
+           
+            for (int i = 0; i < myLayer.Tiles.Count; i++)
+            {
+                collisionLayer[i] = myLayer.Tiles[i].Gid;
+            }
 
             Vector2 pointeur = new Vector2(16, 29);
             int y = 0;
             collision = new List<Rectangle>();
             foreach (int i in collisionLayer)
             {
-                if (i == 744)
+                if (i == 743)
                 {
                     collision.Add(new Rectangle((int)pointeur.X, (int)pointeur.Y, 32, 32));
                 }

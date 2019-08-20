@@ -21,8 +21,8 @@ namespace DungeonLeveling
         {
             boarder = Border;
             color = Color;
-            bar = new Basic2d("Autre/healthBar", new Vector2(20, Global.screenHeight - 100), dims);
-            barBkg = new Basic2d("Autre/healthBarBkg", new Vector2(20, Global.screenHeight - 100), dims);
+            bar = new Basic2d("Autre/healthBar", new Vector2(20, Global.screenHeight - 46), dims);
+            barBkg = new Basic2d("Autre/healthBarBkg", new Vector2(20, Global.screenHeight - 46), dims);
         }
 
         public virtual void Update(float current, float max)

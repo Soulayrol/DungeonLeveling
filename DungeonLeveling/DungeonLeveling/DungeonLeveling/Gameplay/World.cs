@@ -12,24 +12,19 @@ namespace DungeonLeveling
     // Classe avec tout les obj du jeu
     public class World
     {
-        // Units 
         public Hero hero;
-        public List<Mob> mobs = new List<Mob>();
-        public List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
-        public List<Projectile> projectiles = new List<Projectile>();
-        public List<Unit> tuable = new List<Unit>();
-
-        // Initialisation de tous les obj
+        public Map map;
+        public string[] maps;
+        
         
         //UI
         public UI ui;
         public int numKilled;
 
-
         public World()
         {
             //Camera
-            Global.camera = new Camera();
+            // Global.camera = new Camera();
             // Hero
             var animations = new Dictionary<string, Animation>()
             {
@@ -38,13 +33,13 @@ namespace DungeonLeveling
                 { "WalkLeft", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_left"), 9) },
                 { "WalkRight", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_right"), 9) },
             };
-            hero = new Hero(new Vector2(Global.screenWidth / 2 - 24, Global.screenHeight / 2 - 24), new Vector2(33, 53), animations);
+            hero = new Hero(new Vector2(Global.screenWidth / 2, Global.screenHeight / 2), new Vector2(33, 53), animations);
            
-            // Spawner
-            spawnPoints.Add(new SpawnPoint("Autre/vide", Global.camera.GetWorldPosition(new Vector2(500, 500)), new Vector2(60, 60)));
-            
             ui = new UI();
             ui.Update(this);
+
+            maps = new string[5] { "2d/Map/map", "2d/Map/mapTop", "2d/Map/mapDown", "2d/Map/mapLeft", "2d/Map/mapRight" };
+            map = new Map(maps[0]);
         }
 
         public void Update()
@@ -54,34 +49,24 @@ namespace DungeonLeveling
             {
                 hero.Update();
 
-                for (int i = 0; i < projectiles.Count; i++)
+                if(map.path == maps[0])
                 {
-                    projectiles[i].Update(mobs.ToList<Unit>());
-                    if (projectiles[i].done)
-                    {
-                        projectiles.RemoveAt(i);
-                        i--;
-                    }
+                    if (hero.position.X < 0) { map = new Map(maps[3]); hero.position = new Vector2(Global.screenWidth, Global.screenHeight / 2); }
+                    if (hero.position.X > Global.screenWidth) { map = new Map(maps[4]); hero.position = new Vector2(0, Global.screenHeight / 2); }
+                    if (hero.position.Y < 0) { map = new Map(maps[1]); hero.position = new Vector2(Global.screenWidth / 2 + 10, Global.screenHeight); }
+                    if (hero.position.Y > Global.screenWidth) { map = new Map(maps[2]); hero.position = new Vector2(Global.screenWidth / 2 + 10, 0); }
                 }
-                for (int i = 0; i < mobs.Count; i++)
-                {
-                    mobs[i].Update(hero);
-                    if (mobs[i].isDead)
-                    {
-                        numKilled++;
-                        mobs.RemoveAt(i);
-                        i--;
-                    }
-                }
-                for (int i = 0; i < spawnPoints.Count; i++)
-                {
-                    spawnPoints[i].Update();
-                    if (spawnPoints[i].isDead)
-                    {
-                        spawnPoints.RemoveAt(i);
-                        i--;
-                    }
-                }
+                if(map.path == maps[1])
+                    if (hero.position.Y > Global.screenWidth) { map = new Map(maps[0]); hero.position = new Vector2(Global.screenWidth / 2 + 10, 0); }
+                if(map.path == maps[2])
+                    if (hero.position.Y < 0) { map = new Map(maps[0]); hero.position = new Vector2(Global.screenWidth / 2 + 10, Global.screenHeight); }
+                if(map.path == maps[3])
+                    if (hero.position.X > Global.screenWidth) { map = new Map(maps[0]); hero.position = new Vector2(0, Global.screenHeight / 2); }
+                if(map.path == maps[4])
+                    if (hero.position.X < 0) { map = new Map(maps[0]); hero.position = new Vector2(Global.screenWidth, Global.screenHeight / 2); }
+               
+
+                map.Update(ref numKilled, hero);
             }
             else
             {
@@ -96,29 +81,9 @@ namespace DungeonLeveling
 
         public void Draw()
         {
-            foreach (SpawnPoint spawnPoint in spawnPoints)
-            {
-                spawnPoint.Draw();
-            }
-            foreach (Mob mob in mobs)
-            {
-                mob.Draw();
-            }
-            foreach (Projectile projectile in projectiles)
-            {
-                projectile.Draw();
-            }
-
+            map.Draw();
             hero.Draw();
         }
-
-        public virtual void AddMob(object obj)
-        {
-            mobs.Add((Mob)obj);
-        }
-        public virtual void AddProjectile(object obj)
-        {
-            projectiles.Add((Projectile)obj);
-        }
+        
     }
 }

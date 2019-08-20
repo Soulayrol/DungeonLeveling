@@ -103,7 +103,7 @@ namespace DungeonLeveling
                 return;
             
             Global.spriteBatch.End();
-            Global.spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive, transformMatrix: Global.camera._transform);
+            Global.spriteBatch.Begin(SpriteSortMode.Texture, BlendState.Additive);
             foreach (var segment in Segments)
             {
                 Texture2D Lighting = Global.content.Load<Texture2D>(PathLighting);
@@ -111,7 +111,8 @@ namespace DungeonLeveling
                 segment.Draw(Lighting, HalfCircle, Tint * (Alpha * 0.9F));
             }
             Global.spriteBatch.End();
-            Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera._transform, samplerState: SamplerState.PointClamp);
+            // Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera._transform, samplerState: SamplerState.PointClamp);
+            Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp);
         }
 
         public override void Update(List<Unit> units)

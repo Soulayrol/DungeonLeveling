@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Penumbra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace DungeonLeveling
         public Hero hero;
         public Map map;
         public string[] maps;
-        
         
         //UI
         public UI ui;
@@ -39,7 +39,7 @@ namespace DungeonLeveling
             ui.Update(this);
 
             maps = new string[5] { "2d/Map/map", "2d/Map/mapTop", "2d/Map/mapDown", "2d/Map/mapLeft", "2d/Map/mapRight" };
-            map = new Map(maps[0]);
+            map = new Map(maps[0], hero);
         }
 
         public void Update()
@@ -51,21 +51,20 @@ namespace DungeonLeveling
 
                 if(map.path == maps[0])
                 {
-                    if (hero.position.X < 0) { map = new Map(maps[3]); hero.position = new Vector2(Global.screenWidth, Global.screenHeight / 2); }
-                    if (hero.position.X > Global.screenWidth) { map = new Map(maps[4]); hero.position = new Vector2(0, Global.screenHeight / 2); }
-                    if (hero.position.Y < 0) { map = new Map(maps[1]); hero.position = new Vector2(Global.screenWidth / 2 + 10, Global.screenHeight); }
-                    if (hero.position.Y > Global.screenWidth) { map = new Map(maps[2]); hero.position = new Vector2(Global.screenWidth / 2 + 10, 0); }
+                    if (hero.position.X < 0) { map = new Map(maps[3], hero); hero.position = new Vector2(Global.screenWidth, Global.screenHeight / 2); }
+                    if (hero.position.X > Global.screenWidth) { map = new Map(maps[4], hero); hero.position = new Vector2(0, Global.screenHeight / 2); }
+                    if (hero.position.Y < 0) { map = new Map(maps[1], hero); hero.position = new Vector2(Global.screenWidth / 2 + 10, Global.screenHeight); }
+                    if (hero.position.Y > Global.screenWidth) { map = new Map(maps[2], hero); hero.position = new Vector2(Global.screenWidth / 2 + 10, 0); }
                 }
                 if(map.path == maps[1])
-                    if (hero.position.Y > Global.screenWidth) { map = new Map(maps[0]); hero.position = new Vector2(Global.screenWidth / 2 + 10, 0); }
+                    if (hero.position.Y > Global.screenWidth) { map = new Map(maps[0], hero); hero.position = new Vector2(Global.screenWidth / 2 + 10, 0); }
                 if(map.path == maps[2])
-                    if (hero.position.Y < 0) { map = new Map(maps[0]); hero.position = new Vector2(Global.screenWidth / 2 + 10, Global.screenHeight); }
+                    if (hero.position.Y < 0) { map = new Map(maps[0], hero); hero.position = new Vector2(Global.screenWidth / 2 + 10, Global.screenHeight); }
                 if(map.path == maps[3])
-                    if (hero.position.X > Global.screenWidth) { map = new Map(maps[0]); hero.position = new Vector2(0, Global.screenHeight / 2); }
+                    if (hero.position.X > Global.screenWidth) { map = new Map(maps[0], hero); hero.position = new Vector2(0, Global.screenHeight / 2); }
                 if(map.path == maps[4])
-                    if (hero.position.X < 0) { map = new Map(maps[0]); hero.position = new Vector2(Global.screenWidth, Global.screenHeight / 2); }
+                    if (hero.position.X < 0) { map = new Map(maps[0], hero); hero.position = new Vector2(Global.screenWidth, Global.screenHeight / 2); }
                
-
                 map.Update(ref numKilled, hero);
             }
             else

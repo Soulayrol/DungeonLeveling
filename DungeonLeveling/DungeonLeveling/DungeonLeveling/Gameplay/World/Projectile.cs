@@ -57,7 +57,6 @@ namespace DungeonLeveling
         }
         
 
-
         public override void Draw()
         {
             base.Draw();

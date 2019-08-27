@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Projectiles/Light.png</SourceFile>
-  <SourceTime>2012-08-30T06:49:34+02:00</SourceTime>
+  <SourceTime>2019-08-21T00:16:30+02:00</SourceTime>
   <DestFile>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/bin/Windows/Content/2d/Projectiles/Light.xnb</DestFile>
-  <DestTime>2019-08-19T11:44:39.5291235+02:00</DestTime>
+  <DestTime>2019-08-21T14:19:54.7379376+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2019-06-23T14:18:06+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

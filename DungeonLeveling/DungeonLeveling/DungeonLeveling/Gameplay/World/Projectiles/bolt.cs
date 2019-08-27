@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Penumbra;
 
 namespace DungeonLeveling
 {
@@ -16,11 +17,23 @@ namespace DungeonLeveling
         public Color Tint { get; set; }
         public bool IsComplete { get { return Alpha <= 0; } }
         private TimerMaster timerBolt = new TimerMaster(2000);
+        private TimerMaster timerLight = new TimerMaster(100);
         public string PathLighting;
         public string PathHalfCircle;
         static Random rand = new Random();
         private Vector2 origine;
         private Vector2 target;
+        // Light
+        Light light = new PointLight
+        {
+            Scale = new Vector2(1500),
+            Color = new Color(0.9f, 0.8f, 1f),
+            CastsShadows = false,
+            ShadowType = ShadowType.Illuminated,
+            Position = new Vector2(Global.screenWidth / 2, -Global.screenHeight / 2)
+        };
+        bool isRemove = false;
+        
 
         public Bolt(Vector2 Pos, Unit Owner, Vector2 Target) : base(null, Pos, new Vector2(5, 50), Owner, Target)
         {
@@ -33,15 +46,15 @@ namespace DungeonLeveling
             Segments = CreateBolt(Pos, Target, 1f);
             origine = Pos;
             target = Target;
+            Global.penumbra.Lights.Add(light);
         }
 
-        protected static List<Line> CreateBolt(Vector2 source, Vector2 dest, float thickness)
+        protected List<Line> CreateBolt(Vector2 source, Vector2 dest, float thickness)
         {
             var results = new List<Line>();
             Vector2 tangent = dest - source;
             Vector2 normal = Vector2.Normalize(new Vector2(tangent.Y, -tangent.X));
             float length = tangent.Length();
-            
 
             List<float> positions = new List<float>();
             positions.Add(0);
@@ -56,12 +69,12 @@ namespace DungeonLeveling
 
             Vector2 prevPoint = source;
             float prevDisplacement = 0;
-            for (int i = 1; i < positions.Count; i++)
+            for (int i = 0; i < positions.Count - 1; i++)
             {
-                float pos = positions[i];
-
+                float pos = positions[i+1];
+                
                 // used to prevent sharp angles by ensuring very close positions also have small perpendicular variation.
-                float scale = (length * Jaggedness) * (pos - positions[i - 1]);
+                float scale = (length * Jaggedness) * (pos - positions[i]);
 
                 // defines an envelope. Points near the middle of the bolt can be further from the central line.
                 float envelope = pos > 0.95f ? 20 * (1 - pos) : 1;
@@ -71,6 +84,9 @@ namespace DungeonLeveling
                 displacement *= envelope;
 
                 Vector2 point = source + pos * tangent + displacement * normal;
+                
+                
+
                 results.Add(new Line(prevPoint, point, thickness));
                 prevPoint = point;
                 prevDisplacement = displacement;
@@ -118,9 +134,20 @@ namespace DungeonLeveling
         public override void Update(List<Unit> units)
         {
             timer.UpdateTimer();
+            timerLight.UpdateTimer();
             CollisionTest(units);
             if (timer.Test())
                 done = true;
+
+            Console.Write("1");
+            if (timerLight.Test())
+                if (!isRemove)
+                {
+                    Global.penumbra.Lights.RemoveAt(Global.penumbra.Lights.Count - 1);
+                    isRemove = true;
+                }
+                
+
             Alpha -= FadeOutRate;
         }
     }

@@ -12,6 +12,7 @@ using MonoGame.Extended.Content.Pipeline;
 using System;
 using System.Collections.Generic;
 using MonoGame.Extended.Tiled.Graphics;
+using Penumbra;
 #endregion
  
 namespace DungeonLeveling
@@ -22,7 +23,6 @@ namespace DungeonLeveling
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-
         public Main()
         {
             IsMouseVisible = true;
@@ -30,6 +30,10 @@ namespace DungeonLeveling
             Content.RootDirectory = "Content";
             // Input change to 2 if you want 2 players
             Global.inputs = new InputManager(this);
+            //Light
+            Global.penumbra = new PenumbraComponent(this);
+            Global.penumbra.SpriteBatchTransformEnabled = false;
+            Services.AddService(Global.penumbra);
         }
 
         protected override void Initialize()
@@ -56,6 +60,12 @@ namespace DungeonLeveling
             Global.spriteBatch = spriteBatch;
             // Load the World
             Global.gameplay = new Gameplay();
+            // Load penumbra
+            Global.penumbra.Initialize();
+
+            Matrix transform = Matrix.CreateOrthographic(Global.screenWidth, Global.screenHeight, 10f, 0);
+            transform.Translation = new Vector3(-1,1,0);
+            Global.penumbra.Transform = transform;
         }
         
         protected override void UnloadContent()
@@ -74,7 +84,6 @@ namespace DungeonLeveling
             Global.inputs.Update(gameTime);
             // Loop
             Global.gameplay.Update();
-
             
 
             base.Update(gameTime);
@@ -83,11 +92,15 @@ namespace DungeonLeveling
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Global.penumbra.BeginDraw();
+
+            GraphicsDevice.Clear(Color.Black);
             // Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, transformMatrix: Global.camera.get_transformation(GraphicsDevice), samplerState: SamplerState.PointClamp);
             Global.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, samplerState: SamplerState.PointClamp);
                 Global.gameplay.Draw();
             Global.spriteBatch.End();
+
+            Global.penumbra.Draw(gameTime);
 
             Global.spriteBatch.Begin();
                 Global.gameplay.world.ui.Draw(Global.gameplay.world);

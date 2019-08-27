@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
+using Penumbra;
 using System;
 using System.Collections.Generic;
 using TiledSharp;
@@ -12,7 +13,7 @@ namespace DungeonLeveling
     {
         public List<Rectangle> collision;
 
-        public void LoadCollision(string path)
+        public void LoadMap(string path)
         {
             var map = new TmxMap(path);
             var myLayer = map.Layers["collision"];
@@ -32,11 +33,22 @@ namespace DungeonLeveling
                 if (i == 743)
                 {
                     collision.Add(new Rectangle((int)pointeur.X, (int)pointeur.Y, 32, 32));
+                    Global.penumbra.Hulls.Add(HullFromRectangle(new Rectangle((int)pointeur.X, (int)pointeur.Y, 32, 32)));
+                                  
                 }
                 pointeur.X += 32;
                 if (y == 19) { pointeur.Y += 32; pointeur.X = 16; y = -1; }
                 y++;
             }
+        }
+
+        private static Hull HullFromRectangle(Rectangle bounds)
+        {
+            return new Hull
+            {
+                Position = new Vector2(bounds.X, bounds.Y),
+                Scale = new Vector2(bounds.Width, bounds.Height)
+            };
         }
 
         public bool IsCollision(Rectangle unit)
@@ -67,8 +79,7 @@ namespace DungeonLeveling
             }
             return false;
         }
-
-
+        
         // LINE/LINE
         public bool lineLine(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
         {

@@ -160,3 +160,5 @@ D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\Dungeo
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\mapLeft.tmx
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\mapRight.tmx
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\mapTop.tmx
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Penumbra.dll
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Penumbra.xml

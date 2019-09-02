@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
-using Penumbra;
 using System;
 using System.Collections.Generic;
 using TiledSharp;
@@ -12,12 +11,14 @@ namespace DungeonLeveling
     public class Collision
     {
         public List<Rectangle> collision;
+        public Dictionary<Vector2, Color> mapLight;
 
         public void LoadMap(string path)
         {
             var map = new TmxMap(path);
             var myLayer = map.Layers["collision"];
 
+            // Collision
             int[] collisionLayer = new int[400];
            
             for (int i = 0; i < myLayer.Tiles.Count; i++)
@@ -33,22 +34,40 @@ namespace DungeonLeveling
                 if (i == 743)
                 {
                     collision.Add(new Rectangle((int)pointeur.X, (int)pointeur.Y, 32, 32));
-                    Global.penumbra.Hulls.Add(HullFromRectangle(new Rectangle((int)pointeur.X, (int)pointeur.Y, 32, 32)));
-                                  
                 }
                 pointeur.X += 32;
                 if (y == 19) { pointeur.Y += 32; pointeur.X = 16; y = -1; }
                 y++;
             }
-        }
+            // Light
+            var layerLight = map.Layers["light"];
 
-        private static Hull HullFromRectangle(Rectangle bounds)
-        {
-            return new Hull
+            int[] lightTab = new int[400];
+
+            for (int i = 0; i < layerLight.Tiles.Count; i++)
             {
-                Position = new Vector2(bounds.X, bounds.Y),
-                Scale = new Vector2(bounds.Width, bounds.Height)
-            };
+                lightTab[i] = layerLight.Tiles[i].Gid;
+            }
+
+            pointeur = new Vector2(16, 29);
+            y = 0;
+            mapLight = new Dictionary<Vector2, Color>();
+            foreach (int i in lightTab)
+            {
+                if (i == 743)
+                {
+                    mapLight.Add(new Vector2((int)pointeur.X + 16, (int)pointeur.Y + 16), Color.Red);
+                }
+                else if(i == 1117)
+                {
+                    mapLight.Add(new Vector2((int)pointeur.X + 16, (int)pointeur.Y + 16), Color.White);
+                }
+                pointeur.X += 32;
+                if (y == 19) { pointeur.Y += 32; pointeur.X = 16; y = -1; }
+                y++;
+            }
+
+
         }
 
         public bool IsCollision(Rectangle unit)

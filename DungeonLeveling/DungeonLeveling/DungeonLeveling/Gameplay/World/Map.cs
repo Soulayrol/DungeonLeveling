@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using Penumbra;
@@ -27,6 +28,9 @@ namespace DungeonLeveling
             Color = Color.White,
             CastsShadows = false
         };
+        List<Light> mapLights = new List<Light>();
+        private TimerMaster timeLight = new TimerMaster(200);
+        Texture2D lightTex = Global.content.Load<Texture2D>("2d/Map/TexturedLight");
 
         public Map(string Path, Hero hero)
         {
@@ -42,6 +46,20 @@ namespace DungeonLeveling
             spawnPoints.Add(new SpawnPoint("Autre/vide", new Vector2(500, 500), new Vector2(60, 60)));
             
             Global.penumbra.Lights.Add(heroLight);
+            Console.WriteLine(Global.collision.mapLight.Count);
+            foreach (KeyValuePair<Vector2, Color> obj in Global.collision.mapLight)
+            {
+                Light mapLight = new TexturedLight(lightTex)
+                {
+                    Scale = new Vector2(50),
+                    Color = obj.Value,
+                    Intensity = 1.2f,
+                    Position = new Vector2(obj.Key.X - 16, -obj.Key.Y + 30),
+                    Rotation = MathHelper.PiOver2
+                };
+                mapLights.Add(mapLight);
+                Global.penumbra.Lights.Add(mapLight);
+            }
         }
 
         public void Update(ref int numKilled, Hero hero)
@@ -75,6 +93,21 @@ namespace DungeonLeveling
                     spawnPoints.RemoveAt(i);
                     i--;
                 }
+            }
+            timeLight.UpdateTimer();
+            if (timeLight.Test())
+            {
+                Random rand = new Random();
+                foreach (Light light in mapLights)
+                {
+                    float val;
+                    if (light.Color == Color.White)
+                        val = rand.Next(45, 50);
+                    else
+                        val = rand.Next(15, 50);
+                    light.Scale = new Vector2(val);
+                }
+                timeLight.ResetToZero();
             }
         }
 

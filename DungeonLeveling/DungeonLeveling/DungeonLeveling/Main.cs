@@ -63,7 +63,7 @@ namespace DungeonLeveling
             // Load penumbra
             Global.penumbra.Initialize();
 
-            Matrix transform = Matrix.CreateOrthographic(Global.screenWidth, Global.screenHeight, 10f, 0);
+            Matrix transform = Matrix.CreateOrthographic(Global.screenWidth, Global.screenHeight, 1f, 0f);
             transform.Translation = new Vector3(-1,1,0);
             Global.penumbra.Transform = transform;
         }

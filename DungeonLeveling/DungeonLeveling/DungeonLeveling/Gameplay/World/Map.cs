@@ -46,7 +46,6 @@ namespace DungeonLeveling
             spawnPoints.Add(new SpawnPoint("Autre/vide", new Vector2(500, 500), new Vector2(60, 60)));
             
             Global.penumbra.Lights.Add(heroLight);
-            Console.WriteLine(Global.collision.mapLight.Count);
             foreach (KeyValuePair<Vector2, Color> obj in Global.collision.mapLight)
             {
                 Light mapLight = new TexturedLight(lightTex)
@@ -81,6 +80,13 @@ namespace DungeonLeveling
                 if (mobs[i].isDead)
                 {
                     numKilled++;
+                    hero.xp += mobs[i].xp;
+                    if(hero.xp >= hero.xpMax)
+                    {
+                        hero.xp -= hero.xpMax;
+                        hero.xpMax = (int)(hero.xpMax * 1.3);
+                        hero.niv++;
+                    }
                     mobs.RemoveAt(i);
                     i--;
                 }

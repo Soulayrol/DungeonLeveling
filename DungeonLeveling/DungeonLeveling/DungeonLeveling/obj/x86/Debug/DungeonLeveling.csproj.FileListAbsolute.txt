@@ -163,3 +163,5 @@ D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\Dungeo
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Penumbra.dll
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\MonoGame.Penumbra.xml
 D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\2d\Map\TexturedLight.xnb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\xpBarBkg.xnb
+D:\Documents\Dev\MonoGame\DungeonLeveling\DungeonLeveling\DungeonLeveling\DungeonLeveling\bin\Windows\x86\Debug\Content\Autre\xpBar.xnb

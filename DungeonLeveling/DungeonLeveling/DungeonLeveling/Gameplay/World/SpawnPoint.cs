@@ -11,7 +11,7 @@ namespace DungeonLeveling
     {
         public TimerMaster spawnTimer;
 
-        public SpawnPoint(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
+        public SpawnPoint(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims, 100)
         {
             spawnTimer = new TimerMaster(4000);
         }
@@ -24,7 +24,6 @@ namespace DungeonLeveling
                 SpawnMob();
                 spawnTimer.ResetToZero();
             }
-
             base.Update();
         }
 
@@ -33,12 +32,10 @@ namespace DungeonLeveling
             Global.gameplay.world.map.AddMob(new RedBlop(new Vector2(position.X, position.Y)));
         }
 
-
         public override void Draw()
         {
             base.Draw();
         }
-
 
     }
 }

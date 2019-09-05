@@ -17,18 +17,26 @@ namespace DungeonLeveling
         public int test;
 
 
-        public QuantityDisplayBarHero(Vector2 dims, int Border, Color Color)
+        public QuantityDisplayBarHero(int Border, Color Color, string path)
         {
             boarder = Border;
             color = Color;
-            bar = new Basic2d("Autre/healthBar", new Vector2(20, Global.screenHeight - 46), dims);
-            barBkg = new Basic2d("Autre/healthBarBkg", new Vector2(20, Global.screenHeight - 46), dims);
+            if(path == "Autre/xpBar")
+            {
+                bar = new Basic2d(path, new Vector2(Global.screenWidth - 217, Global.screenHeight - 47), new Vector2(200, 32));
+                barBkg = new Basic2d(path + "Bkg", new Vector2(Global.screenWidth - 220, Global.screenHeight - 46), new Vector2(200, 32));
+            }
+            else
+            {
+                bar = new Basic2d(path, new Vector2(24, Global.screenHeight - 46), new Vector2(200, 32));
+                barBkg = new Basic2d(path + "Bkg", new Vector2(20, Global.screenHeight - 46), new Vector2(200, 32));
+            }
+            
         }
 
         public virtual void Update(float current, float max)
         {
-            bar.dimension.X = current / max * (barBkg.dimension.X - boarder * 2);
-
+            bar.dimension.X = current / max * (barBkg.dimension.X - boarder * 2) - 8;
         }
 
         public virtual void Draw()
@@ -37,6 +45,7 @@ namespace DungeonLeveling
             bar.Draw(new Vector2(0, 0), color);
         }
     }
+
     public class QuantityDisplayBar
     {
         public int boarder;

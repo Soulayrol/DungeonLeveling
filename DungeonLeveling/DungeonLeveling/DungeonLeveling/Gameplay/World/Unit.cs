@@ -19,15 +19,14 @@ namespace DungeonLeveling
             get { return new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y); }
         }
 
-        public Unit(string path, Vector2 pos, Vector2 dims, float speedBase = 2f) 
+        public Unit(string path, Vector2 pos, Vector2 dims, float healhMaxP, float speedBase = 2f) 
             : base(path, pos, dims)
         {
             isDead = false;
             speed = speedBase;
             hitDist = 35f;
-            healh = 100;
+            healh = healhMaxP;
             healhMax = healh;
-                
         }
         public Unit(Vector2 pos, Vector2 dims, Dictionary<string, Animation> animations, float speedBase = 2f)
             : base(null, pos, dims)

@@ -10,10 +10,12 @@ namespace DungeonLeveling
     public class Mob : Unit
     {
         public QuantityDisplayBar healBar;
+        public int xp;
 
-        public Mob(string Path, Vector2 Pos, Vector2 Dims) : base(Path, Pos, Dims)
+        public Mob(string Path, Vector2 Pos, Vector2 Dims, int xpParam = 10) : base(Path, Pos, Dims, 100 * (1 + ((float)Global.gameplay.world.hero.niv / 10)), 2)
         {
             healBar = new QuantityDisplayBar(new Vector2(80, 8), 2, Color.Red, Pos);
+            xp = xpParam;
         }
 
         public virtual void Update(Hero hero)

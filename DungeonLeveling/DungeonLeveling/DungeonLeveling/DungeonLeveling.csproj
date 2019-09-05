@@ -134,6 +134,7 @@
     <Content Include="Content\Autre\vide.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Autre\xpBarBkg.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -138,8 +138,6 @@ namespace DungeonLeveling
             CollisionTest(units);
             if (timer.Test())
                 done = true;
-
-            Console.Write("1");
             if (timerLight.Test())
                 if (!isRemove)
                 {

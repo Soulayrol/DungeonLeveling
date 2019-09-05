@@ -28,9 +28,13 @@
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Autre/healthBarBkgSimple.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Autre/healthBarSimple.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Autre/vide.png</File>
+    <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Autre/xpBar.png</File>
+    <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Autre/xpBarBkg.png</File>
     <File>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/Fonts/File.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

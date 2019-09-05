@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+ 
 namespace DungeonLeveling
 {
     public class RedBlop : Mob
     {
-        public RedBlop(Vector2 Pos) : base("2d\\Units\\Mobs\\monster_1", Pos, new Vector2(50, 50))
+        private static int xp = 10;
+        public RedBlop(Vector2 Pos) : base("2d\\Units\\Mobs\\monster_1", Pos, new Vector2(50, 50), xp)
         {
             speed = 2f;
         }

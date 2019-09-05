@@ -13,6 +13,9 @@ namespace DungeonLeveling
     {
         private TimerMaster cooldown = new TimerMaster(1000);
         private TimerMaster cooldown2 = new TimerMaster(1500);
+        public int xp = 0;
+        public int xpMax = 100;
+        public int niv = 0;
 
         public Hero(Vector2 pos, Vector2 dims, Dictionary<string, Animation> animations) 
             : base(pos, dims, animations)
@@ -24,7 +27,6 @@ namespace DungeonLeveling
 
         public override void Update()
         {
-            Vector2 cameraDirection = Vector2.Zero;
             cooldown.UpdateTimer();
             cooldown2.UpdateTimer();
 
@@ -32,52 +34,44 @@ namespace DungeonLeveling
             if ((Global.inputs.IsPressed(Input.Left) || Global.inputs.IsPressed(Keys.Q)))
             {
                 position.X -= speed;
-                --cameraDirection.X;
                 --Velocity.X;
                 // Test colision
                 if (Global.collision.IsCollision(BoudingBox))
                 {
                     position.X += speed;
-                    ++cameraDirection.X;
                     ++Velocity.X;
                 }
             }
             if ((Global.inputs.IsPressed(Input.Right) || Global.inputs.IsPressed(Keys.D)))
             {
                 position.X += speed;
-                ++cameraDirection.X;
                 ++Velocity.X;
                 // Test colision
                 if (Global.collision.IsCollision(BoudingBox))
                 {
                     position.X -= speed;
-                    --cameraDirection.X;
                     --Velocity.X;
                 }
             }
             if ((Global.inputs.IsPressed(Input.Up) || Global.inputs.IsPressed(Keys.Z)))
             {
                 position.Y -= speed;
-                --cameraDirection.Y;
                 --Velocity.Y;
                 // Test colision
                 if (Global.collision.IsCollision(BoudingBox))
                 {
                     position.Y += speed;
-                    ++cameraDirection.Y;
                     ++Velocity.Y;
                 }
             }
             if ((Global.inputs.IsPressed(Input.Down) || Global.inputs.IsPressed(Keys.S)))
             {
                 position.Y += speed;
-                ++cameraDirection.Y;
                 ++Velocity.Y;
                 // Test colision
                 if (Global.collision.IsCollision(BoudingBox))
                 {
                     position.Y -= speed;
-                    --cameraDirection.Y;
                     --Velocity.Y;
                 }
             }

@@ -3,7 +3,7 @@
   <SourceFile>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/2d/Map/map.tmx</SourceFile>
   <SourceTime>2019-08-27T15:51:37.8850493+02:00</SourceTime>
   <DestFile>D:/Documents/Dev/MonoGame/DungeonLeveling/DungeonLeveling/DungeonLeveling/DungeonLeveling/Content/bin/Windows/2d/Map/map.xnb</DestFile>
-  <DestTime>2019-09-02T10:09:11.7055124+02:00</DestTime>
+  <DestTime>2019-09-02T12:23:47.594518+02:00</DestTime>
   <Importer>TiledMapImporter</Importer>
   <ImporterTime>2019-08-21T00:16:30+02:00</ImporterTime>
   <Processor>TiledMapProcessor</Processor>

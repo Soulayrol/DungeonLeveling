@@ -34,7 +34,6 @@ namespace DungeonLeveling
                 { "WalkRight", new Animation(Global.content.Load<Texture2D>("2d/Hero/hero_right"), 9) },
             };
             hero = new Hero(new Vector2(Global.screenWidth / 2, Global.screenHeight / 2), new Vector2(33, 53), animations);
-           
             ui = new UI();
             ui.Update(this);
 
